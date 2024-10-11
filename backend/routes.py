@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from models import db, Product
 from flask_cors import CORS
-
+from scraper import get_price
 track_product = Blueprint('track_product', __name__)  
 CORS(track_product)
 @track_product.route('/track', methods=['POST'])
@@ -15,8 +15,9 @@ def track():
             return jsonify({"error": f"Missing key: {key}"}), 400  
 
     try:
-        cur_price = data.get('cur_price', 3)  
-        original_price = data.get('original_price', 6)
+        price = (get_price(data['url']))
+        price = price.replace('\xa0', '').replace('€', '')
+        original_price = cur_price = price
 
         product = Product(
             url=data['url'],
@@ -28,7 +29,7 @@ def track():
         db.session.add(product)
         db.session.commit()
 
-        return jsonify({"message": "Product saved"}), 201  #
+        return jsonify({"message": "Product saved"}), 201  
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500 
