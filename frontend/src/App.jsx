@@ -7,7 +7,6 @@ function App() {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('4')
     
     fetch('http://127.0.0.1:5000/track', {
       method: 'POST',
