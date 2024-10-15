@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Login(){
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
         <div>
-            <h1>Login page</h1>
+            <form>
+                <label>
+                    Email:
+                </label>
+                <input
+                    value={email}
+                />
+                <br/>
+                <br/>
+                <label>Password: </label>
+                <input value={password}/>
+                <button>Login</button>
+            </form>
+            
         </div>
     )
 }
