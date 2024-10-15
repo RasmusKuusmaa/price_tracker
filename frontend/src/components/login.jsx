@@ -4,20 +4,46 @@ function Login(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const loginData = {email, password}
+        try {
+            const response = await fetch('http://127.0.0.1:5000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(loginData)
+        });
+        const res = await response.json();
+        if (res.ok) {
+            alert('login successful')
+        } else {
+            alert(res.error || 'login not successful')
+        }
+        } catch (error) {
+            console.error('login frnt err', error)
+            alert('NO BUENO')
+        } 
+
+    }
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>
                     Email:
                 </label>
                 <input
                     value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <br/>
                 <br/>
                 <label>Password: </label>
-                <input value={password}/>
-                <button>Login</button>
+                <input value={password}
+                type='password'
+                onChange={(e) => setPassword(e.target.value)}/>
+                <button type='submit'>Login</button>
             </form>
             
         </div>
