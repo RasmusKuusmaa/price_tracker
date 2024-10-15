@@ -8,6 +8,6 @@ class Product(db.Model):
     cur_price = db.Column(db.Float, nullable=True)
     email = db.Column(db.String(100), nullable=False)
 class User(db.Model):
-    id = db.Column(db.integer, primary_key = True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key = True, autoincrement=True)
     user_name = db.Column(db.String(50), nullable=False)
     password = db.Column(db.String(50), nullable=False)

@@ -33,3 +33,10 @@ def track():
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500 
+
+@track_product.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    print('received data: ', data)
+
+    return jsonify({"message": "success"}), 200
