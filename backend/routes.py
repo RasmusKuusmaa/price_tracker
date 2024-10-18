@@ -40,3 +40,9 @@ def login():
     print('received data: ', data)
 
     return jsonify({"message": "success"}), 200
+
+@track_product.route('register', methods=['POST'])
+def register():
+    data = request.get_json()
+    print('received data', data)
+    return jsonify({'message', "success"}), 200
