@@ -6,7 +6,25 @@ function Register(){
     const [password2, setPassword2] = useState('');
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email, password, password2)
+        try {
+            const response = await fetch('http://127.0.0.1:5000/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({email, password, password2})
+        });
+        const res = await response.json();
+        if (response.ok) {
+            alert('account registered')
+        } else {
+            alert(res.error || 'not registered')
+        }
+    } catch (error) {
+            console.error('reg err', error)
+            alert('No Bueno')
+
+        }
     }
     return (
         <div>
