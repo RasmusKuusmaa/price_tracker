@@ -49,6 +49,8 @@ function Register(){
                 onChange={(e) => setPassword2(e.target.value)}/>
                 <button type='submit'> Register</button>
             </form>
+            <button onClick={() => window.location.href = '/login'}>
+                Already have an account</button>
         </div>
     )
 }   

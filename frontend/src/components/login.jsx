@@ -45,6 +45,8 @@ function Login(){
                 onChange={(e) => setPassword(e.target.value)}/>
                 <button type='submit'>Login</button>
             </form>
+            <button onClick={() => window.location.href = '/register'}>
+                create an account</button>
             
         </div>
     )
