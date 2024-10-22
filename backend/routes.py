@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from models import db, Product
+from models import db, Product, User
 from flask_cors import CORS
 from scraper import get_price
 track_product = Blueprint('track_product', __name__)  
@@ -37,10 +37,15 @@ def track():
 @track_product.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    print('received data: ', data)
-
-    return jsonify({"message": "success"}), 200
-
+    user = User.query.filter_by(data['email']).first()
+    if not user:
+        print('no such user')
+        return jsonify({'message', 'no user'}), 400
+    else:
+        if user.password == data['password']:
+            return jsonify({'success'}), 200
+        else:
+            return jsonify({'incorrect password'}), 400
 @track_product.route('register', methods=['POST'])
 def register():
     data = request.get_json()
