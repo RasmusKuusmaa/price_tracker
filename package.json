@@ -1,5 +1,22 @@
 {
   "dependencies": {
     "react-router-dom": "^6.27.0"
-  }
+  },
+  "name": "price_tracker",
+  "description": "A website that notifies the user upon a pricefall of their selected product.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RasmusKuusmaa/price_tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RasmusKuusmaa/price_tracker/issues"
+  },
+  "homepage": "https://github.com/RasmusKuusmaa/price_tracker#readme"
 }
